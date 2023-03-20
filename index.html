@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Leaflet</title>
+
+    <!-- SRC LEAFLET --> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <!-- SRC GEOTIFF -->
+    <script src="https://unpkg.com/geotiff@0.4.1/dist/main.js"></script>
+    <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
+    <script src="leaflet-geotiff/leaflet-geotiff.js"></script>
+    <script src="leaflet-geotiff/leaflet-geotiff-plotty.js"></script>
+    <script src="leaflet-geotiff/leaflet-geotiff-vector-arrows.js"></script>
+
+    <!-- SRC GEOJSON -->
+    <script src="cicatriz1_gjson.js"></script>
+
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+	
+</head>
+<body>
+
+
+<div id="map" style="width: 600px; height: 400px;"></div>
+
+<script>
+	const map = L.map('map').setView([-20.286, -46.685], 13);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+    const gjson = L.geoJSON(objeto).addTo(map);
+
+    var layer = L.leafletGeotiff(url="L1C_T23KLT_A022372_20210618T132526.tif").addTo(map);
+    // -46.685 / -20.286
+</script>
+
+
+
+</body>
+</html>
